@@ -7,8 +7,8 @@ $(document).ready(function () {
 		 * and the max numbers.
 		 */
 		initialize: function() {
-			this.min = numbers['min'];
-			this.max = numbers['max'];
+			this.min = settings['numbers']['min'];
+			this.max = settings['numbers']['max'];
 			$(".number.min").text(this.min);
 			$(".number.max").text(this.max);
 		},
@@ -45,7 +45,7 @@ $(document).ready(function () {
 
 			if (elementId === "equal") {
 				// Display message
-				$(".game-section").find("p").text(messages['success']);
+				$(".game-section").find("p").text(settings['messages']['success']);
 				// Remove the buttons
 				$(".game-section").find("button").addClass("hidden");
 			} else if (elementId === "small") {
