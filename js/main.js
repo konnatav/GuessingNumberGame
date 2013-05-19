@@ -24,7 +24,7 @@ $(document).ready(function () {
 			$(".instructions").addClass("hidden");
 			$(".game-section").removeClass("hidden");
 			// Calculate the first guessed number
-			this.number = this.min + Math.round((this.max - this.min) / 2);
+			appview.calculateNumber(event);
 			appview.displayNumber(".number", this.number);
 		},
 		/**
@@ -55,17 +55,23 @@ $(document).ready(function () {
 					this.min = this.min;
 					this.max = this.number;
 					// Calculate the next number
-					this.number = this.min + Math.round((this.max - this.min) / 2);
+					appview.calculateNumber(event);
 				}
 				appview.displayNumber(".number", this.number);
 
 			} else if (elementId === "big") {
 				this.min = this.number;
 				this.max = this.max;
-				// Calculate the next number
-				this.number = this.min + Math.round((this.max - this.min) / 2);
+				appview.calculateNumber(event);
 				appview.displayNumber(".number", this.number);
 			}
+		},
+		/**
+		 * It calculates the guessed number.
+		 * @param {event} object The triggered event
+		 */
+		calculateNumber: function(event) {
+			this.number = this.min + Math.round((this.max - this.min) / 2);
 		}
 	});
 
