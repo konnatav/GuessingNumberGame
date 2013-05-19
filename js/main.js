@@ -2,6 +2,10 @@ $(document).ready(function () {
 
 	var AppView = Backbone.View.extend({
 		el: $("body"),
+		/**
+		 * Initiates the game. It sets the min
+		 * and the max numbers.
+		 */
 		initialize: function() {
 			this.min = numbers['min'];
 			this.max = numbers['max'];
@@ -12,6 +16,10 @@ $(document).ready(function () {
 			"click #start": "startGame",
 			"click .game-section button": "guessNumber"
 		},
+		/**
+		 * It displays the game's page.
+		 * @param {event} object The triggered event
+		 */
 		startGame: function(event) {
 			$(".instructions").addClass("hidden");
 			$(".game-section").removeClass("hidden");
@@ -19,9 +27,18 @@ $(document).ready(function () {
 			this.number = this.min + Math.round((this.max - this.min) / 2);
 			appview.displayNumber(".number", this.number);
 		},
+		/**
+		 * It displays the guessed numbers.
+		 * @param {element} element The dom element
+		 * @param {number} number The guessed number
+		 */
 		displayNumber: function(element, number) {
 			$(element).text(number);
 		},
+		/**
+		 * It guesses the number.
+		 * @param {event} object The triggered event
+		 */
 		guessNumber: function(event) {
 			var element = event.currentTarget;
 			var elementId = $(element).attr("id");
