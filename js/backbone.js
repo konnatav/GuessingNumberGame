@@ -198,6 +198,8 @@
     this.initialize.apply(this, arguments);
   };
 
+  debugger;
+
   // Attach all inheritable methods to the Model prototype.
   _.extend(Model.prototype, Events, {
 
